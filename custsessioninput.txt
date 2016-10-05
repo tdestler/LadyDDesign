@@ -1,0 +1,31 @@
+   Session["FirstName"]  =     txtFirstName.Text;
+   Session["LastName"]  =     txtLastName.Text;
+   Session["Street1"]  =     txtStreet1.Text;
+   Session["Street2"]  =     txtStreet2.Text;
+   Session["City"]  =     txtCity.Text;
+ Session["Phone"]  =     txtPhone.Text;
+Session["EmailAddress"]  =     txtEmailAddress.Text;
+Session["State"]  =    ddlCustState.SelectedValue.ToString();
+
+try
+{
+        txtLastName.Text =  Session["FirstName"].ToString() ;
+        txtStreet1.Text = Session["LastName"].ToString() ;
+        txtStreet2.Text = Session["Street1"].ToString() ;
+        txtCity.Text = Session["Street2"].ToString() ;
+        txtZip.Text = Session["City"].ToString() ;
+        txtPhone.Text = Session["Phone"].ToString() ;
+        
+      ddlCustState.SelectedValue = Session["State"];
+}
+catch
+{
+}
+try
+{
+txtEmailAddress.Text =  Session["EmailAddress"].ToString() ;
+}
+catch
+{
+}
+

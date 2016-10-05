@@ -1,0 +1,186 @@
+<head runat="server">
+ 
+    <title></title>
+ 
+   <style type="text/css">
+ 
+       label {
+ 
+           display:block;
+ 
+           padding:10px;
+ 
+           margin:10px 0px;
+ 
+       }
+ 
+       .Items {
+ 
+       background:#ffd800;
+ 
+       color:#333;
+ 
+       border: 1px #ff006e solid;
+ 
+       }
+ 
+       .Edit {
+ 
+        background:#4cff00;
+ 
+       color:#333;
+ 
+       border: 1px #ff006e solid;
+ 
+       }
+ 
+   </style>
+ 
+</head>
+ 
+<body>
+ 
+    <form id="form1" runat="server">
+ 
+    <div>
+ 
+        <h1>Customers List</h1>
+ 
+        <asp:DataList ID="DataList1" runat="server"  OnItemCommand="DataList1_ItemCommand" RepeatColumns="4" RepeatDirection="Horizontal" >
+ 
+            <ItemTemplate>
+ 
+                <div class="Items">
+ 
+               <label>Customer ID   : <%# Eval("customer_ID")%></label>
+ 
+               <label>Customer Name :  <%# Eval("customer_name")%></label>
+ 
+               <label>Customer Surname : <%# Eval("customer_surname")%></label>
+ 
+               <label>Customer City : <%# Eval("customer_city") %></label>
+ 
+                <label>
+ 
+                    <asp:LinkButton ID="LinkButton1" runat="server" CommandName="cmd_Edit">Edit</asp:LinkButton>
+ 
+                </label>
+ 
+               </div>
+ 
+            </ItemTemplate>
+ 
+            <EditItemTemplate>
+ 
+                 <div class="Edit">
+ 
+                     <asp:Label ID="lblID" runat="server" Text='<%# Eval("customer_ID")%>'></asp:Label>
+ 
+  
+ 
+               <label>
+ 
+                   Customer Name :
+ 
+                   <asp:TextBox ID="txt_name" runat="server" Text='<%# Eval("customer_name")%>'></asp:TextBox>
+ 
+               </label>
+ 
+               <label>
+ 
+                   Customer Surname :
+ 
+                   <asp:TextBox ID="txt_surname" runat="server" Text='<%# Eval("customer_surname")%>'></asp:TextBox>
+ 
+               </label>
+ 
+  
+ 
+               <label>
+ 
+                   Customer City :
+ 
+                   <asp:TextBox ID="txt_city" runat="server" Text='<%# Eval("customer_city")%>'></asp:TextBox>
+ 
+               </label>
+ 
+  
+ 
+               <label>
+ 
+                   <asp:LinkButton ID="btn_Update" runat="server" CommandName="cmd_Update" CommandArgument='<%# Eval("customer_ID")%>'>Update</asp:LinkButton>
+ 
+               </label>
+ 
+  
+ 
+               <label>
+ 
+                   <asp:LinkButton ID="btn_cancel" runat="server" CommandName="cmd_Cancel">Cancel</asp:LinkButton>
+ 
+               </label>
+ 
+            </EditItemTemplate>
+ 
+        </asp:DataList>
+ 
+    </div>
+ 
+    </form>
+ 
+</body>
+ 
+</html>
+    protected void DataList1_ItemCommand(object source, DataListCommandEventArgs e)
+    {
+        
+        switch (e.CommandName)
+        {
+ 
+            case "cmd_Edit":
+                  DataList1.EditItemIndex = e.Item.ItemIndex;
+                  ListCustomers();
+              break;
+ 
+ 
+ 
+            case "cmd_Update" :
+ 
+                // CommandArgumnet Value which is CustomerID
+                int CustomerID = Convert.ToInt32(e.CommandArgument);
+ 
+                //Find control access the text box inside EditItemTemplate
+                TextBox name = (TextBox)e.Item.FindControl("txt_name");
+                TextBox surname = (TextBox)e.Item.FindControl("txt_surname");
+                TextBox city = (TextBox)e.Item.FindControl("txt_city");
+ 
+                //Connection String From Web.Config File
+                SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["mycon"].ConnectionString);
+ 
+                string query = "UPDATE Customers SET customer_name=@name,customer_surname=@surname,customer_city=@city WHERE customer_ID=@ID";
+                
+                using (SqlCommand cmd = new SqlCommand(query, con)) 
+                {
+                    cmd.Connection.Open();
+ 
+                    cmd.Parameters.AddWithValue("ID", CustomerID);
+                    cmd.Parameters.AddWithValue("name", name.Text);
+                    cmd.Parameters.AddWithValue("surname", surname.Text);
+                    cmd.Parameters.AddWithValue("city", city.Text);
+ 
+                    cmd.ExecuteNonQuery();
+                    DataList1.EditItemIndex = -1;
+                    ListCustomers();
+                }
+                 
+                break;
+ 
+ 
+            case "cmd_Cancel" :
+                DataList1.EditItemIndex = -1;
+                ListCustomers();
+                break;
+ 
+        }
+    }
+}

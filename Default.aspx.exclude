@@ -1,0 +1,12 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/gallery.master" AutoEventWireup="true" CodeFile="Default.aspx.cs" Inherits="Forms_Default" %>
+
+
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+    <asp:Label ID="label" runat="server" Text=" Photo Gallery" Font-Bold="True" Font-Size="X-Large" ForeColor="Black"></asp:Label>
+             
+</asp:Content>
+

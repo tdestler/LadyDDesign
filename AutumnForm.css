@@ -1,0 +1,271 @@
+﻿
+
+/*CSS for HomPage*/
+
+.slideShow
+{
+    border-style: solid;
+}
+/*#lblTestimonHeader
+{
+    margin-left: 330px;
+}*/
+
+
+#pnlMasterHome
+{
+    background-color:white;
+}
+
+
+
+
+
+/*CSS for Order Forms*/
+
+.Menu1
+{
+    border-style: solid;
+    border-color : black;
+}
+
+body
+        {
+            background-image : -webkit-linear-gradient(45deg, #66FFFF, white);
+            background-image : -moz-linear-gradient(45deg, #66FFFF, white);
+            background-image : -ms-linear-gradient(45deg, #66FFFF, white);
+            background-color: red;  
+            background-position:left;  
+        }
+
+         #form2
+       {
+            border: thick ridge #000000; 
+            background-position: -450px;  
+            /*height: 737px;*/ 
+            margin-left: 14px; 
+            margin-bottom: 5px;
+            margin-top : 17px; 
+            background-image : url('../Imgs/autumnBack.jpg');
+            background-size:cover;
+            background-repeat:repeat;
+            background-position:50px;
+    height: 1542px;
+}
+
+
+         #form3
+       {
+             height: 728px; 
+            margin-left: 1px; 
+            margin-bottom: 5px;
+            margin-top : 100px;
+            padding : 10px;
+            width  : 1263px;
+            /*background-color: white;*/ 
+       }
+
+             #form4
+       {
+            border: thick ridge #000000; 
+            background-position: -450px;  
+            /*height: 737px;*/ 
+            margin-left: 14px; 
+            margin-bottom: 5px;
+            margin-top : 17px; 
+            background-image : url('../Imgs/autumnBack.jpg');
+            background-size:cover;
+            background-repeat:repeat;
+            background-position:50px;
+    height: 300px;
+}
+
+       h1
+        {
+            width: 569px; margin-left: 310px; 
+            text-align: center; 
+            margin-top: 25px; margin-bottom: 0px; 
+            font-family: 'Lucida Calligraphy'; font-variant: inherit; font-style: italic; font-weight: bolder; 
+            color: black;
+            /*text-shadow : 3px 3px 3px gray;*/
+           border-bottom-color : white;
+        }
+
+
+        #pnlInviteForm
+        {
+            border : double red 20px;
+            background-color : white;
+            
+            padding : 10px;
+        }
+
+        #inviteBanner
+        {
+            background-image :-webkit-linear-gradient(30deg, #138FCD, #96CEE5, #138FCD );
+           /*background-color : #138FCD, #00FFFF;*/
+           border: thick double #00FFFF; 
+           padding: inherit; 
+           margin-top: 17px;
+        }
+
+        #pnlHeader
+        {
+         border : solid;
+          border-color : whitesmoke;
+          border-radius : 8px;
+          background-image :-webkit-linear-gradient(30deg, white, #00FFFF, white, white, #00FFFF, white );
+        }
+        #pnlfooter
+{
+    border-color: black;
+    border: solid;
+}
+/*******Styles for the Contact Master Page*******/
+   
+.mainContent {
+    margin: 10px; 
+    }
+
+#sideContent { 
+    margin: 29px 10px 10px 33px;
+}
+#mainContent {
+    height:540px;
+    float: left;
+    width: 597px;
+    margin-left: 65px;
+    margin-top: 28px;
+}
+#sideContent {
+    float:left;
+    height: 540px;
+    width: 539px;
+}
+#footer {
+    clear:both;
+}
+
+ .main_menuMS
+    {
+        width: 200px;
+        background-color: #2ECCFA;
+        color: #000;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 5px;
+    }
+    .level_menuMS
+    {
+        width: 110px;
+        background-color:  #2ECCFA;
+        color: #000;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 5px;
+    }
+    .selectedMS
+    {
+        background-color: #2ECCFA;
+        color: #000;
+    }
+        .main_menuMS:hover
+    {
+        background-color: lavender;
+        color: #000;
+    }
+        .level_menuMS:hover
+    {
+        background-color: lavender;
+        color: #000;
+    }
+
+    #pnlHeaderMS
+        {
+         border : solid;
+          border-color : whitesmoke;
+          border-radius : 8px;
+          background-image :-webkit-linear-gradient(30deg, white, #00FFFF, white, white, #00FFFF, white );
+        }
+#masterPageBody {
+    background-color: green;
+    
+            background-position: -450px;  
+            height: 721px; 
+            margin-left: 14px; 
+            margin-bottom: 5px;
+            margin-top : 42px; 
+            background-image : url('../../Imgs/autumnBack.jpg');
+            background-size:cover;
+            background-repeat:repeat;
+            background-position:50px;
+}
+
+/***********************************************/
+/*Style for Menu Items*/
+/***********************************************/
+
+    .main_menu
+    {
+        width: 200px;
+        background-color: #2ECCFA;
+        color: #000;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        margin-right: 5px;
+    }
+    .level_menu
+    {
+        width: 110px;
+        background-color:  #2ECCFA;
+        color: #000;
+        text-align: center;
+        height: 30px;
+        line-height: 30px;
+        margin-top: 5px;
+    }
+    .selected
+    {
+        background-color: #2ECCFA;
+        color: #000;
+    }
+        .main_menu:hover
+    {
+        background-color: lavender;
+        color: #000;
+    }
+        .level_menu:hover
+    {
+        background-color: lavender;
+        color: #000;
+    }
+
+#Menu1
+{
+border-style: solid;
+    border-color : black;
+}
+
+
+        /*****************************************************************************************************************************8
+                                                    Shopping Cart
+        *******************************************************************************************************************************/
+
+#checkoutLabel
+{
+    width: 569px;
+    margin-left: 310px;
+    text-align: center;
+    margin-top: 25px;
+    margin-bottom: 0px;
+    font-family: 'Lucida Calligraphy';
+    font-variant: inherit;
+    font-style: italic;
+    font-size: small;
+    color: black;
+    /*text-shadow : 3px 3px 3px gray;*/
+    border-bottom-color: white;
+}

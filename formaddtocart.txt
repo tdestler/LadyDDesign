@@ -1,0 +1,91 @@
+
+    protected void btnSubmitCard_Click(object sender, EventArgs e)
+    {
+        Session["FirstName"] = txtInviteFName.Text.Trim();
+        Session["LastName"] = txtInviteLName.Text.Trim();
+ 
+        try
+        {
+            if (txtInviteFName.Text == "" || txtInviteFName.Text == null)
+            {
+                txtInviteFName.BackColor = System.Drawing.Color.Yellow;
+                txtInviteFName.Text = "Required";
+                return;
+            }
+
+            if (txtInviteLName.Text == "")
+            {
+                txtInviteLName.BackColor = System.Drawing.Color.Yellow;
+                txtInviteLName.Text = "Required";
+                return;
+            }
+
+            if (txtInvitePhone1.Text == "")
+            {
+                txtInvitePhone1.BackColor = System.Drawing.Color.Yellow;
+                txtInvitePhone1.Text = "Required";
+                return;
+            }
+
+            if (txtInvitePhone2.Text == "")
+            {
+                txtInvitePhone2.BackColor = System.Drawing.Color.Yellow;
+                txtInvitePhone2.Text = "Required";
+                return;
+            }
+
+            if (txtInvitePhone3.Text == "")
+            {
+                txtInvitePhone3.BackColor = System.Drawing.Color.Yellow;
+                txtInvitePhone3.Text = "Required";
+                return;
+            }
+
+            if (txtInviteStreet1.Text == "")
+            {
+                txtInviteStreet1.BackColor = System.Drawing.Color.Yellow;
+                txtInviteStreet1.Text = "Required";
+                return;
+            }
+        }
+
+        catch
+        {
+        }
+  
+        clsProduct product = new clsProduct();
+        dsProductOrder DS = new dsProductOrder();
+        clsCartItemList cart = clsCartItemList.GetCart();
+        
+
+        DS = clsDataLayer.GetOrderProduct(152);
+        DataRow dr = DS.Tables[0].Rows[0];
+
+        decimal myval = 0;
+
+        if (!(Decimal.TryParse(dr["Price"].ToString(), out myval)))
+        {
+            dr["Price"] = 0;
+        }
+        if (!(Decimal.TryParse(dr["ShippingPrice"].ToString(), out myval)))
+        {
+            dr["ShippingPrice"] = 0;
+        }
+
+        product.ItemId = dr["ItemId"].ToString();
+        product.ItemDesc = "Custom Invite";
+        product.ItemName = dr["ItemName"].ToString();
+        product.ItemLongDesc = "Send Date: " + txtSendDate.Text + " Card Delivery Date: " + txtInviteDeliveryDate.Text + " Custom Order: " + txtInviteSuggestions.Text;
+        product.Price = decimal.Parse(dr["Price"].ToString());
+        product.ShippingPrice = decimal.Parse(dr["ShippingPrice"].ToString());
+        product.ItemUrl = dr["ItemUrl"].ToString();
+        cart.AddItem(product, 1);
+        
+    }
+
+    protected void btnViewCart_Click(object sender, EventArgs e)
+    {
+        {
+            Response.Redirect("~/Forms/frmCart.aspx");
+        }
+    }

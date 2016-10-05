@@ -1,0 +1,68 @@
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Master/mpProducts.master" AutoEventWireup="true" CodeFile="frmProductCards.aspx.cs" Inherits="Forms_frmProductCards" %>
+
+<%@ Register assembly="AjaxControlToolkit" namespace="AjaxControlToolkit" tagprefix="ajaxToolkit" %>
+
+
+
+<%--Content Panel 1**************Empty    ***************************************************************** --%>
+<asp:Content ID="Content1" ContentPlaceHolderID="head" Runat="Server">
+ 
+</asp:Content>
+
+<%--Control Panel 2************************Button Panel ****************************************************--%>
+    <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" Runat="Server">
+             <div  >
+              <asp:Panel ID="Panel3" runat="server" style="margin-top: 16px; margin-left: 1px;" HorizontalAlign="Center" Width="1263px" Height="200px">
+
+             <h2 style="align-content:center"> 
+                <asp:Label ID="Label11" runat="server" Text="Lady D. Designs, LLC. Lasting Memories! -Products" style="text-align: center"></asp:Label>
+            <br />
+             </h2>
+                    
+<%--            <asp:UpdatePanel ID="UpdatePanel1" runat="server" RenderMode="Block" >
+            <ContentTemplate>
+             <asp:Timer ID="Timer1" runat="server" Interval="5000" OnTick="Timer1_Tick"></asp:Timer>
+           
+                <asp:Image ID="imgGallery" Height="215px"  Width="277px"  runat="server" ImageUrl="~/SlideImages/IMG_2762.JPG" ImageAlign="Middle" />
+            <img alt="image1" class="aboutUs_Style1" src="../Imgs/CardPicture.jpg"" style="height: 180px; width: 200px" />
+
+            </ContentTemplate>
+        </asp:UpdatePanel>--%>
+             
+                  </asp:Panel>
+               </div>
+
+</asp:Content>
+
+<asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" Runat="Server">
+    <asp:Panel ID="pnlFormBody" runat="server" Height="560px" HorizontalAlign="Left" style="margin-left: 241px; margin-top: 83px" Width="811px">
+      <h2 style="align-content:center"> 
+                <asp:Label ID="Label2" runat="server" Text="Available Products" style="text-align: center"></asp:Label>
+            <br />
+                <asp:SqlDataSource ID="SqlDataSource2" runat="server"></asp:SqlDataSource>
+             </h2> 
+      <asp:DataList ID="DataList1" runat="server" RepeatDirection="Horizontal" ShowFooter="False" ShowHeader="False" RepeatColumns="3" CellPadding="10" DataSourceID="SqlDataSource1" >
+                 <ItemTemplate>
+
+                <asp:ImageButton ID="imgZoom1" runat="server" ImageUrl='<%# Eval("ItemUrl") %>' OnClick="ImageOnClick" AlternateText='<%# Eval("ItemID") %>' Height="150px" Width="150px" />
+                <br />
+                <asp:Label ID="lblItemName" runat="server" Text='<%# InStock(Eval("ItemName").ToString(),Eval("QtyOnHand").ToString()) %>' Height="25px" Width="150px" Font-Italic="True" Font-Bold="True" Font-Size="X-Large" ForeColor="#0099FF"></asp:Label>
+                <br />
+                <asp:Label ID="lblItemDesc" runat="server" Text='<%# Bind("ItemDesc") %>' height="100px" Width="100px"></asp:Label>
+                <br />
+                <asp:Label ID="lblPrice" runat="server" Text='<%# Eval("Price","{0:C}") %>' Height="50px" Width="50px"></asp:Label>
+                <br />
+            </ItemTemplate>
+             </asp:DataList>
+      <asp:SqlDataSource ID="SqlDataSource1" runat="server"></asp:SqlDataSource>
+      <asp:Repeater ID="rptPager" runat="server">
+    <ItemTemplate>
+        <asp:LinkButton ID="lnkPage" runat="server" Text='<%#Eval("Text") %>' CommandArgument='<%# Eval("Value") %>'
+            CssClass='<%# Convert.ToBoolean(Eval("Enabled")) ? "page_enabled" : "page_disabled" %>'
+            OnClick="Page_Changed" OnClientClick='<%# !Convert.ToBoolean(Eval("Enabled")) ? "return false;" : "" %>' BackColor="#999966" BorderStyle="Double" Font-Size="Larger" ForeColor="Black"></asp:LinkButton>
+   </ItemTemplate>
+</asp:Repeater>
+            </asp:Panel>
+
+
+</asp:Content>

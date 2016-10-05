@@ -1,0 +1,88 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="gallery.master.cs" Inherits="Master_gallery" %>
+<%@ Register Assembly="AjaxControlToolkit" Namespace="AjaxControlToolkit" TagPrefix="ajaxToolkit" %>
+<%--<%@ Import Namespace="MySql.Data.MySqlClient" %>
+<%@ Import Namespace="System.Data" %>--%>
+
+<!DOCTYPE html>
+<%--<script runat="server">
+    [System.Web.Services.WebMethod]
+    [System.Web.Script.Services.ScriptMethod]
+
+    /*  Script to load images from database for slide show.*/
+
+    public static AjaxControlToolkit.Slide[] GetImages()
+    {
+
+        MySqlConnection conn = new MySqlConnection("server=dbmLadyDesign.db.11512815.hostedresource.com;user id=dbmLadyDesign;database=dbmLadyDesign;password=TeamB@2015");
+        conn.Open();
+            MySqlDataAdapter adp = new MySqlDataAdapter("Select itemName,itemDesc, itemUrl from tblItem where itemType = 'Card'", conn);
+            DataSet dsProduct = new DataSet();
+            adp.Fill(dsProduct);
+
+            conn.Close();
+
+            List<Slide> slides = new List<Slide>();
+            
+        
+            foreach (DataTable slidetbl in dsProduct.Tables)
+            {
+                foreach (DataRow sliderow in slidetbl.Rows)
+                {
+                    slides.Add(new Slide
+                    {
+                        Name = sliderow["ItemName"].ToString(),
+                        Description = sliderow["ItemDesc"].ToString(),
+                        ImagePath = sliderow["ItemUrl"].ToString()
+                    });
+
+                }
+            }
+            return slides.ToArray();
+       
+    }  
+    
+    </script>--%>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+                <div id="inviteBanner">
+
+            
+        <asp:Panel ID="Panel2" runat="server" style="margin-top: 16px; margin-left: 1px;" HorizontalAlign="Center" Width="1263px" Height="40px">
+            <asp:Button ID="Button1" runat="server" Text="Button" Width="248px" style="margin-left: 0px" />
+            <asp:Button ID="Button2" runat="server" Text="Button" width="248px" />
+            <asp:Button ID="Button3" runat="server" Text="Button" width="248px" />
+            <asp:Button ID="Button4" runat="server" Text="Button" width="248px" />
+            <asp:Button ID="Button5" runat="server" Text="Button" width="233px" />
+        </asp:Panel>
+
+            <asp:Panel ID="pnlCardsHeader" runat="server" Height="30px" style="margin-left: 49px; margin-top: 16px" Width="1159px" HorizontalAlign="Center">
+                <h2>Bookmarks/Cards/Scapebooks</h2>
+             </asp:Panel>
+
+                <asp:ScriptManager ID="ScriptManager1" runat="server"></asp:ScriptManager> 
+
+                 <asp:Panel ID="pnlSlideShow" runat="server" BorderColor="Black" BorderStyle="None" BorderWidth="14px" Height="331px" HorizontalAlign="Center" style="margin-left: 241px; margin-top: 29px" Width="811px">
+  
+                    <asp:Label ID="lblSlideImages" runat="server" Text=" Photo Gallery" Font-Bold="True" Font-Size="X-Large" ForeColor="Black"></asp:Label>
+             
+                    <asp:Image ID="Image1" runat="server"  Height="200px" Width="400px" BorderColor="Black" BorderWidth="1" ></asp:Image>
+                    <asp:Label ID="lblSlideDescription" runat="server" Text="Available Products" Font-Size="X-Large" Font-Bold="True" ForeColor="Black"></asp:Label> 
+
+                </asp:Panel> 
+                    <ajaxToolkit:SlideShowExtender ID="SlideShowExtender1" runat="server" TargetControlID="Image1" AutoPlay="True" Loop="True" PlayInterval="10" SlideShowAnimationType="FadeInOut" SlideShowServiceMethod="GetImages" ImageTitleLabelID="lblSlideImages" ImageDescriptionLabelID="lblSlideDescription" SlideShowServicePath="~/Gallery.asmx" />
+            </div>
+    <div>
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+          <asp:Label ID="Label2" runat="server" Text=" Photo Gallery" Font-Bold="True" Font-Size="X-Large" ForeColor="Black"></asp:Label>
+             
+        </asp:ContentPlaceHolder>
+    </div>
+    </form>
+</body>
+</html>
